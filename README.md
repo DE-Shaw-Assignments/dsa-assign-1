@@ -33,12 +33,12 @@
 
 ## Question-3 (3-Sum Closet)
 
-- Submission Link - https://leetcode.com/problems/3sum-closest/submissions/1148803096
+- Submission Link - https://leetcode.com/problems/3sum-closest/submissions/1149059401
 - Passed all test cases
-- Time Complexity - O(nlogk)
+- Time Complexity - O(n^2)
 - Space Complexity - O(1)
 - Explanation - 
-- Screenshot - ![Submission Photo](<./Ques-3/Screenshot from 2024-01-17 18-43-49.png>)
+- Screenshot -![Submission Photo](image.png)
 
 ## Question-4 (Jump-Game)
 
@@ -49,9 +49,9 @@
 - Explanation - 
 - Screenshot - ![Submission Photo](./Ques-4/image.png)
 
-## Question-5 
+## Question-5 (Design Front Middle Back Queue)
 
-- Submission Link - https://leetcode.com/problems/3sum-closest/submissions/1148803096
+- Submission Link - https://leetcode.com/problems/
 - Passed all test cases
 - Time Complexity - O(nlogk)
 - Space Complexity - O(1)
