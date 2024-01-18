@@ -38,7 +38,7 @@
 - Time Complexity - O(n^2)
 - Space Complexity - O(1)
 - Explanation - 
-- Screenshot -![Submission Photo](image.png)
+- Screenshot -![Submission Photo](./Ques-3/image.png)
 
 ## Question-4 (Jump-Game)
 
