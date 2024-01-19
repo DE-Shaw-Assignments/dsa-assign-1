@@ -1,11 +1,11 @@
 struct Node
 {
-    int val;
+    int value;
     Node *next;
     Node *prev;
     
     Node(int x) {
-        val = x;
+        value = x;
         next = nullptr;
         prev = nullptr;
     }
@@ -46,7 +46,9 @@ public:
     {
         Node *newNode = new Node(value);
         if (count == 0) {
-            head = tail = mid = newNode;
+            head = newNode;
+            tail = newNode;
+            mid = newNode;
         } else if (count == 1) {
             newNode->next = mid;
             mid->prev = newNode;
