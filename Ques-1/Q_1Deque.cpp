@@ -1,38 +1,90 @@
+class Node {
+public:
+    int data;
+    Node* next;
+    Node* prev;
 
-class Dequeue {
+    Node(int value) {
+        data = value;
+        next = nullptr;
+        prev = nullptr;
+    }
+};
+
+class Deque {
 private:
-    LinkedList list;
+    Node* front;
     Node* rear;
 
 public:
-    Dequeue() {}
-
-    void push_back(int num) {
-        list.insert_at_end(num);
-        rear
+    Deque() {
+        front = nullptr;
+        rear = nullptr;
     }
 
     void push_front(int num) {
-        list.insert_at_start(num);
-    }
-
-    void pop_back() {
-        list.remove_from_end();
+        Node* new_node = new Node(num);
+        if (!front) {
+            front = rear = new_node;
+        } else {
+            new_node->next = front;
+            front->prev = new_node;
+            front = new_node;
+        }
     }
 
     void pop_front() {
-        list.remove_from_start();
+        if (front) {
+            Node* temp = front;
+            front = front->next;
+            if (front) {
+                front->prev = nullptr;
+            } else {
+                rear = nullptr;
+            }
+            delete temp;
+        }
     }
 
-    int front() {
-        return list.front();
+    void push_back(int num) {
+        Node* new_node = new Node(num);
+        if (!rear) {
+            front = rear = new_node;
+        } else {
+            new_node->prev = rear;
+            rear->next = new_node;
+            rear = new_node;
+        }
+    }
+
+    void pop_back() {
+        if (rear) {
+            Node* temp = rear;
+            rear = rear->prev;
+            if (rear) {
+                rear->next = nullptr;
+            } else {
+                front = nullptr;
+            }
+            delete temp;
+        }
+    }
+
+    int front_() {
+        return front ? front->data : -1;
     }
 
     int back() {
-        return list.last();
+        return rear ? rear->data : -1;
     }
 
-    void display() {
-        list.traverse();
+    void traverse() {
+        Node* temp = front;
+        while (temp) {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+        cout <<endl;
     }
 };
+

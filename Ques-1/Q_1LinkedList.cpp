@@ -2,30 +2,46 @@ class Node {
 public:
     int data;
     Node* next;
+    Node* prev;
 
-    Node(int value){
+    Node(int value) {
         data = value;
         next = nullptr;
+        prev = nullptr;
     }
 };
 
 class LinkedList {
 private:
     Node* head;
+    Node* tail;
 
 public:
-    LinkedList() : head(nullptr) {}
+    LinkedList() {
+        head = nullptr;
+        tail = nullptr;
+    }
 
     void insert_at_start(int num) {
         Node* new_node = new Node(num);
-        new_node->next = head;
-        head = new_node;
+        if (!head) {
+            head = tail = new_node;
+        } else {
+            new_node->next = head;
+            head->prev = new_node;
+            head = new_node;
+        }
     }
 
     void remove_from_start() {
         if (head) {
             Node* temp = head;
             head = head->next;
+            if (head) {
+                head->prev = nullptr;
+            } else {
+                tail = nullptr;
+            }
             delete temp;
         }
     }
@@ -33,46 +49,33 @@ public:
     void insert_at_end(int num) {
         Node* new_node = new Node(num);
         if (!head) {
-            head = new_node;
+            head = tail = new_node;
         } else {
-            Node* temp = head;
-            while (temp->next) {
-                temp = temp->next;
-            }
-            temp->next = new_node;
+            new_node->prev = tail;
+            tail->next = new_node;
+            tail = new_node;
         }
     }
 
     void remove_from_end() {
-        if (head) {
-            if (!head->next) {
-                delete head;
-                head = nullptr;
+        if (tail) {
+            Node* temp = tail;
+            tail = tail->prev;
+            if (tail) {
+                tail->next = nullptr;
             } else {
-                Node* temp = head;
-                while (temp->next->next) {
-                    temp = temp->next;
-                }
-                delete temp->next;
-                temp->next = nullptr;
+                head = nullptr;
             }
+            delete temp;
         }
     }
-    // Assuming -1 as an indicator of an empty list
+
     int front() {
         return head ? head->data : -1;
     }
 
     int last() {
-        if (!head) {
-            return -1; 
-        } else {
-            Node* temp = head;
-            while (temp->next) {
-                temp = temp->next;
-            }
-            return temp->data;
-        }
+        return tail ? tail->data : -1;
     }
 
     void traverse() {
