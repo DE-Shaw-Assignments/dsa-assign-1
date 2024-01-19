@@ -1,7 +1,7 @@
 
 ## Question-5 (Design Front Middle Back Queue)
 
-- **Submission Link:** [LeetCode Submission](https://leetcode.com/problems/)
+- **Submission Link:** [LeetCode Submission](https://leetcode.com/problems/design-front-middle-back-queue/submissions/1150753372)
 - **Status:** Passed all test cases
 - **Time Complexity:** O(1) for all operations
 - **Explanation:**
